@@ -38,3 +38,4 @@ lib/generated_plugin_registrant.dart
 
 # Firebase connection
 GoogleService-Info.plist
+google-services.json
