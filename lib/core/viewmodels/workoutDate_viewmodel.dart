@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:strength_project/core/models/workout.dart';
 import 'package:strength_project/core/services/api.dart';
 import 'package:strength_project/core/viewmodels/workout_viewmodel.dart';
