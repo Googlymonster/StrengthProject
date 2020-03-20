@@ -26,7 +26,7 @@ class AddWorkoutDateButton extends StatelessWidget {
             print('$workout has been added');
             callback(workoutDateApi);
           } else {
-            print('No exercise selected.');
+            print('No workout selected.');
           }
         });
       },
