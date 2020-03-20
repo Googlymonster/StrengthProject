@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:strength_project/core/models/workout.dart';
 import 'package:strength_project/core/viewmodels/workoutDate_viewmodel.dart';
 import 'package:strength_project/ui/pages/calender_view/widgets/addWorkoutDateButton.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -18,7 +17,7 @@ class _WorkoutsDateState extends State<WorkoutsDate>
   CalendarController _calendarController;
   AnimationController _animationController;
   CreateWorkoutDateViewModel _workoutDateApi = CreateWorkoutDateViewModel();
-  Map<DateTime, List> _events;
+  Map<DateTime, List<dynamic>> _events;
   List _selectedEvents;
   DateTime _selectedDay;
 
@@ -27,7 +26,7 @@ class _WorkoutsDateState extends State<WorkoutsDate>
     super.initState();
     final _selectedDay = DateTime.now();
     CreateWorkoutDateViewModel _workoutDateApi = CreateWorkoutDateViewModel();
-    // _events = _workoutDateApi.fetchWorkoutDates();
+    _events = _workoutDateApi.fetchWorkoutDates();
     _events = {
       _selectedDay.subtract(Duration(days: 30)): [
         'Event A0',
@@ -270,7 +269,11 @@ class _WorkoutsDateState extends State<WorkoutsDate>
     );
   }
 
-  void refreshCallback() {}
+  void refreshCallback(CreateWorkoutDateViewModel workoutDateApi) async {
+    setState(() {
+      this._events = workoutDateApi.fetchWorkoutDates();
+    });
+  }
 
   void _workoutDateCalenderSubmission() {}
 }
